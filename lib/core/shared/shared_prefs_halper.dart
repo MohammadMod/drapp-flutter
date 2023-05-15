@@ -9,7 +9,7 @@ class SharedPrefsHalper {
   static final SharedPrefsHalper _singleton = SharedPrefsHalper._();
   static SharedPrefsHalper get instance => _singleton;
   SharedPrefsHalper._();
-  String lang = "ku";
+  String lang = "en";
   UserModel? user;
   bool themeMode = false;
 
@@ -60,7 +60,7 @@ class SharedPrefsHalper {
   }
 
   getLang() async {
-    lang = (await storage.read(key: "lang")) ?? "ku";
+    lang = (await storage.read(key: "lang")) ?? "en";
   }
 
   Future<void> deleteAccount() async {

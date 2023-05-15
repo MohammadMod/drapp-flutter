@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tandrustito/core/shared/theme_lang_notifier.dart';
 
 Locale getLocale(String? lang) {
-  if (ThemeLangNotifier.instance.showInfo == false) {
-    return const Locale('ku');
-  }
   if (lang == "ku") {
     return const Locale('ku');
   } else if (lang == "ar") {

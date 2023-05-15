@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:tandrustito/core/shared/imports.dart';
+import 'package:tandrustito/core/shared/theme_lang_notifier.dart';
 import 'package:tandrustito/features/account/controller.dart';
 
 recoredError(e, c) {
@@ -17,7 +19,13 @@ TextDirection getTextDirection(String text) {
       : TextDirection.ltr;
 }
 
-bool get isLogin => AccountNotifer.instance.accountModel != null;
+bool get isLogin =>
+    AccountNotifer.instance.accountModel != null ||
+    FirebaseAuth.instance.currentUser != null;
+bool get canEdit =>
+    AccountNotifer.instance.accountModel != null ||
+    (FirebaseAuth.instance.currentUser != null &&
+        ThemeLangNotifier.instance.showInfoEdit);
 
 //
 

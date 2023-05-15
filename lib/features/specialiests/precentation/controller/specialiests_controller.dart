@@ -26,7 +26,11 @@ class CategoriesNotifer extends ChangeNotifier {
       Halper.i.pop();
       if (r != null) {
         categories.add(r);
-        status = Status.success;
+        var seen = <int>{};
+        categories =
+            categories.where((student) => seen.add(student.id)).toList();
+
+        status = Status.success; 
       }
       status = Status.success;
       _setData();

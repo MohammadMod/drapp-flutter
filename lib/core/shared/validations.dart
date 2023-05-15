@@ -65,7 +65,7 @@ String? validateUserName(String? value) {
 String? validatePassword(String? value) {
   if (value == null || value.trim().isEmpty || value.isEmpty) {
     return Trans.required.trans();
-  } else if (value.trim().length < 2) {
+  } else if (value.trim().length < 6) {
     return Trans.tooShort.trans();
   }
   return null;

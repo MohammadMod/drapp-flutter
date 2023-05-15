@@ -41,7 +41,7 @@ class DoctorWidget extends StatelessWidget {
         child: Slidable(
           key: ValueKey(index),
 
-          startActionPane: (!isLogin)
+          startActionPane: (!canEdit)
               ? null
               : ActionPane(
                   motion: const ScrollMotion(),
@@ -69,7 +69,7 @@ class DoctorWidget extends StatelessWidget {
                 ),
 
           // The end action pane is the one at the right or the bottom side.
-          endActionPane: (!isLogin)
+          endActionPane: (!canEdit)
               ? null
               : ActionPane(
                   motion: const ScrollMotion(),
@@ -94,7 +94,7 @@ class DoctorWidget extends StatelessWidget {
           child: Ribbon(
             color: primaryColor,
             nearLength: 35,
-            location: (!isLogin)
+            location: (!canEdit)
                 ? RibbonLocation.none
                 : model.isAdd
                     ? context.isEn

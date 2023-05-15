@@ -26,11 +26,12 @@ import 'package:tandrustito/views/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   await SharedPrefsHalper.instance.initDatas();
   await LocalFavs.instance.initDatas();
   await AccountNotifer.instance.getAccount();
   ThemeLangNotifier.instance.init();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runZonedGuarded<Future<void>>(() async {
     runApp(

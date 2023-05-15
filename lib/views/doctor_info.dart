@@ -71,7 +71,7 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                       child: const BackButton(color: primaryColor),
                     ),
                     const Spacer(),
-                    if (isLogin)
+                    if (canEdit)
                       PopupMenuButton<PopUpActions>(
                         tooltip: Trans.moreOptions.trans(context: context),
                         onSelected: (value) async {
@@ -295,7 +295,7 @@ class _DoctorsInfoState extends State<DoctorsInfo> {
                                     ],
                                   ),
                                 ),
-                                if (themeLangNotifier.showInfo) ...[
+                                ...[
                                   const SizedBox(height: 20),
                                   Text(
                                       '${Trans.contactInformations.trans(context: context)}: ',

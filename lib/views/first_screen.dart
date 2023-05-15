@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
+import 'package:tandrustito/core/login_screen.dart';
 import 'package:tandrustito/core/shared/imports.dart';
 import 'package:tandrustito/core/shared/theme_lang_notifier.dart';
 import 'package:tandrustito/features/account/controller.dart';
@@ -56,8 +58,9 @@ class _FirstScreenState extends State<FirstScreen> {
                     : Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
-                            onTap: () {
+                            onTap: () async {
                               AccountNotifer.instance.setAccountModel(null);
+                              await FirebaseAuth.instance.signOut();
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
@@ -167,7 +170,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                   title: Trans.laboratories
                                       .trans(context: context),
                                   image: Assets.images.laboratoryRemovebg.path),
-                              if (isLogin)
+                              if (canEdit)
                                 FirstWidget(
                                     onTap: () {
                                       Navigator.push(
@@ -179,7 +182,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                     title: Trans.specialist
                                         .trans(context: context),
                                     image: Assets.images.ttt.path),
-                              if (isLogin)
+                              if (canEdit)
                                 FirstWidget(
                                     onTap: () {
                                       Navigator.push(
@@ -201,19 +204,28 @@ class _FirstScreenState extends State<FirstScreen> {
                 ),
               ],
             ),
-            bottomNavigationBar: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: count != 4 || isLogin
-                  ? null
-                  : GeneralButton(
-                      onTap: () async {
-                        await loginForm();
-                        // count = 0;
-                        // setState(() {});
-                      },
-                      text: Trans.login.trans(context: context),
-                    ),
-            ),
+            bottomNavigationBar: isLogin
+                ? null
+                : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: count != 4
+                        ? GeneralButton(
+                            onTap: () async {
+                              context.to(const LoginScreen());
+                              // count = 0;
+                              // setState(() {});
+                            },
+                            text: Trans.login.trans(context: context),
+                          )
+                        : GeneralButton(
+                            onTap: () async {
+                              await loginForm();
+                              // count = 0;
+                              // setState(() {});
+                            },
+                            text: Trans.login.trans(context: context),
+                          ),
+                  ),
           ),
         );
       }),

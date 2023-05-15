@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:tandrustito/core/shared/imports.dart';
-import 'package:tandrustito/core/shared/theme_lang_notifier.dart';
 import 'package:tandrustito/features/specialiests/precentation/controller/specialiests_controller.dart';
 import 'package:tandrustito/localization/translate_keys.dart';
 import 'package:tandrustito/model/slider_model.dart';
@@ -202,17 +201,15 @@ class SpecialistTile extends StatelessWidget {
                   style: TextStyle(
                       height: 1.1, color: Colors.white, fontSize: 15.sp),
                 ),
-                if (ThemeLangNotifier.instance.showInfo)
-                  const SizedBox(height: 6),
-                if (ThemeLangNotifier.instance.showInfo)
-                  Text(
-                    model.generalModel.phone,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: false,
-                    style: TextStyle(
-                        height: 1.1, color: Colors.white, fontSize: 15.sp),
-                  ),
+                const SizedBox(height: 6),
+                Text(
+                  model.generalModel.phone,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                  style: TextStyle(
+                      height: 1.1, color: Colors.white, fontSize: 15.sp),
+                ),
               ],
             ),
           )

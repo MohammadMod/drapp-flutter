@@ -1,4 +1,9 @@
 {
+    "signUp": "تۆماربوون",
+    "codeSentTYourPhoneNumber": "کۆدێک بۆ ژمارەی مۆبایلەکەت نێردراوە.",
+    "areYouSureToDeleteYourAccount": "ئایا دڵنیایت لە سڕینەوەی هەژمارەکەت؟",
+    "deleteAccount": "سڕینەوەی هەژمار.",
+    "weRecivedYourRequestToDeleteYourAccountYourRequestWillBeProccessed": "مێوبینێکی تۆ لە ڕازاندنەوەی داواکاری سڕینەوەی هەژمارەکەت پێداچوو. داواکاریەکەت پێشکەشکراوە.",
     "about": "دەربارەی",
     "add": "زیادکردن",
     "addToReklams": "زیادکردن بۆ ریکلام",

@@ -1,13 +1,15 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tandrustito/core/shared/imports.dart';
 
 class ThemeLangNotifier with ChangeNotifier {
-  bool showInfo = Platform.isAndroid;
-
+  bool showInfoEdit = false;
+  bool isEditEnable = false;
   setShowInfo(bool val) {
-    showInfo = val;
+    showInfoEdit = val;
+    isEditEnable = val;
     notifyListeners();
   }
 
@@ -20,7 +22,7 @@ class ThemeLangNotifier with ChangeNotifier {
     notifyListeners();
   }
 
-  String lang = "ku";
+  String lang = "en";
   bool isEn = true;
   bool reciveNotifications = true;
   toggleReciveNotifactions(bool reciveNotificationsParam) {
@@ -32,11 +34,24 @@ class ThemeLangNotifier with ChangeNotifier {
   init() {
     lang = SharedPrefsHalper.instance.lang;
     themeMode = SharedPrefsHalper.instance.themeMode;
+    if (FirebaseAuth.instance.currentUser != null) {
+      showInfoEdit = true;
+      notifyListeners();
+    }
+    FirebaseAuth.instance.authStateChanges().listen((event) {
+      if (event != null && isEditEnable) {
+        showInfoEdit = true;
+        notifyListeners();
+      } else {
+        showInfoEdit = false;
+        notifyListeners();
+      }
+    });
   }
 
   changeLang(String newLang) {
     lang = newLang;
-    isEn = lang == "ku";
+    isEn = lang == "en";
     SharedPrefsHalper.instance.setLang(newLang);
     notifyListeners();
   }

@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          floatingActionButton: !isLogin
+          floatingActionButton: !canEdit
               ? FloatingActionButton(
                   backgroundColor: primaryColor,
                   child: const Icon(
@@ -75,7 +75,10 @@ class _HomePageState extends State<HomePage> {
                     UserModel? userModel = SharedPrefsHalper.instance.user;
                     if (userModel == null) {
                       String? name = await enterNickname(desc: "");
-                      userModel = UserModel(name: name!, uuid: generateUid());
+                      if (name == null) {
+                        return;
+                      }
+                      userModel = UserModel(name: name, uuid: generateUid());
                       RemoveCHatSource.instance.createUser(userModel);
                     }
                     Navigator.push(

@@ -135,6 +135,7 @@ class _CreateEditDoctorState extends State<CreateEditDoctor> {
   @override
   Widget build(BuildContext context) {
     logger(specialiests);
+    logger(CategoriesNotifer.instance.categories);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

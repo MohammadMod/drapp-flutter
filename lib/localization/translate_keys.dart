@@ -3,6 +3,16 @@ import 'package:tandrustito/core/shared/imports.dart';
 import 'package:tandrustito/localization/app_local.dart';
 
 class Trans {
+  static String signUp = "signUp";
+  static String
+      weRecivedYourRequestToDeleteYourAccountYourRequestWillBeProccessed =
+      "weRecivedYourRequestToDeleteYourAccountYourRequestWillBeProccessed";
+  static String codeSentTYourPhoneNumber = "codeSentTYourPhoneNumber";
+  static String areYouSureToDeleteYourAccount = "areYouSureToDeleteYourAccount";
+  static String deleteAccount = "deleteAccount";
+  static String checkcode = "checkcode";
+  static String shortNumber = "shortNumber";
+  static String verficatioCode = "verficatioCode";
   static String message = "message";
   static String users = "users";
   static String chat = "chat";
